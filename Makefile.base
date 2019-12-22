@@ -1,0 +1,101 @@
+##---------------##
+## Makefile.base ##
+##-------------------------------------------------------##
+## author: Wanho Choi @ Dexter Studios                   ##
+## 	     Daeseok Chae @ Dexter Studios		             ##
+## last update: 2018.05.07                               ##
+##-------------------------------------------------------##
+
+#ifeq ($(MAYA_VER),2014)
+#	MAYA_INSTALL_PATH := /usr/autodesk/maya$(MAYA_VER)-x64
+#endif
+
+#ifeq ($(MAYA_VER),2016)
+#	MAYA_INSTALL_PATH := /usr/autodesk/maya$(MAYA_VER)-x64
+#endif
+
+#ifeq ($(MAYA_VER),2016.5)
+#	MAYA_INSTALL_PATH := /usr/autodesk/maya$(MAYA_VER)
+#endif
+
+ifeq ($(MAYA_VER),2017)
+	MAYA_INSTALL_PATH := /usr/autodesk/maya$(MAYA_VER)
+endif
+
+ifeq ($(MAYA_VER),2018)
+	MAYA_INSTALL_PATH := /usr/autodesk/maya$(MAYA_VER)
+endif
+
+PRMAN_VER          := 21.7
+PRMAN_INSTALL_PATH := /netapp/backstage/pub/apps/renderman2/applications/linux/RenderManProServer-$(PRMAN_VER)
+
+HEADER_PATH        := header
+SOURCE_PATH        := source
+OBJECT_PATH        := object
+SCRIPT_PATH        := script
+ICON_PATH          := icons
+
+TARGET_PATH        := /opt/Zelos
+
+CC                 := g++
+NVCC               := /usr/local/cuda-8.0/bin/nvcc
+RC                 := prman
+
+INCLUDES           := -I/usr/include
+INCLUDES           += -I/usr/local/include
+INCLUDES           += -I/usr/local/include/boost-1_55
+INCLUDES           += -I/usr/local/include/OpenEXR
+INCLUDES           += -I/usr/local/include/SeExpr
+INCLUDES           += -I/usr/local/cuda-8.0/include
+INCLUDES           += -I/usr/include/python2.7
+INCLUDES           += -I$(MAYA_INSTALL_PATH)/include
+INCLUDES           += -I$(PRMAN_INSTALL_PATH)/include
+INCLUDES           += -I$(HEADER_PATH)
+INCLUDES           += -I../ZelosBase/header
+INCLUDES           += -I../../ZelosBase/header
+INCLUDES           += -I../../../ZelosBase/header
+INCLUDES           += -I../ZelosCudaBase/header
+INCLUDES           += -I../../ZelosCudaBase/header
+INCLUDES           += -I../../../ZelosCudaBase/header
+INCLUDES           += -I../ZelosMayaBase/header
+INCLUDES           += -I../../ZelosMayaBase/header
+INCLUDES           += -I../../../ZelosMayaBase/header
+INCLUDES           += -I../base/header
+INCLUDES           += -I../../base/header
+
+LINKS              := -L/usr/lib64
+LINKS              += -L/usr/local/lib
+LINKS              += -L/usr/local/cuda-8.0/lib64
+LINKS              += -L$(MAYA_INSTALL_PATH)/lib
+LINKS              += -L$(TARGET_PATH)/lib
+
+LINKS              += -lpthread -lgomp -lm -lz -lglut -lGL -lGLU -lGLEW
+LINKS              += -ltiff -lOpenImageIO -lIlmImf
+LINKS              += -lhdf5 -lIlmImf -lAlembic -lSeExpr
+
+CCFLAGS            := -O3 -m64 -fpic -fopenmp -std=c++11 -D_BOOL -DLINUX -DREQUIRE_IOSTREAM
+
+CUFLAGS            := -m64 -Xcompiler -fPIC -std=c++11
+LDFLAGS            := -shared -fopenmp
+SWITCHES           := -Wno-deprecated -Wno-write-strings -Wno-overflow -Wno-unused-local-typedefs
+SWIG_WARNING       := -w401 -w509
+
+CPP_SOURCES        := $(wildcard $(SOURCE_PATH)/*.cpp)
+CPP_LIST           := $(notdir $(CPP_SOURCES))							# *.cpp
+OBJ_LIST           := $(addprefix $(OBJECT_PATH)/,$(CPP_LIST:.cpp=.o))	# *.o
+
+CU_SOURCES         := $(wildcard $(SOURCE_PATH)/*.cu)
+CU_LIST            := $(notdir $(CU_SOURCES))							# *.cu
+OBJ_LIST           += $(addprefix $(OBJECT_PATH)/,$(CU_LIST:.cu=.o))	# *.o
+
+DEP_LIST           := $(addprefix $(OBJECT_PATH)/,$(CPP_LIST:.cpp=.d))	# .d
+
+MEL_LIST           := $(notdir $(SCRIPTS))								# .mel
+SCRIPTS            := $(wildcard $(SCRIPT_PATH)/*.mel)
+
+PNG_LIST           := $(notdir $(ICONS))								# .png
+ICONS              := $(wildcard $(ICON_PATH)/*.png)
+
+PYTHON             := python
+PYTHONS            := $(wildcard $(PYTHON)/*)
+PYTHON_LIST        := $(notdir $(PYTHONS))

@@ -1,0 +1,226 @@
+clear
+./clearAll
+clear
+
+numProc1=`nproc`
+let numProc4=$numProc1*4
+
+####################
+# shared libraries #
+####################
+
+echo "Building: ZelosBase";
+cd ZelosBase; make -j$numProc4; cd ../;
+
+echo "Building: ZelosCudaBase";
+cd ZelosCudaBase; make -j$numProc4; cd ../;
+
+echo "Building: ZeomBase";
+cd Zeom/base; make -j$numProc4; cd ../../;
+
+echo "Building: ArachneBase";
+cd Arachne/base; make -j$numProc4; cd ../../;
+
+echo "Building: ZelosCameraBase";
+cd ZelosCamera/base; make -j$numProc4; cd ../../;
+
+echo "Building: ZelosClothBase";
+cd ZelosCloth/base; make -j$numProc4; cd ../../;
+
+echo "Building: ZelosMeshBase";
+cd ZelosMesh/base; make -j$numProc4; cd ../../;
+
+echo "Building: ZelosWaterBase";
+cd ZelosWater/base; make -j$numProc4; cd ../../;
+
+echo "Building: ZelosFurBase";
+cd ZelosFur/base; make -j$numProc4; cd ../../;
+
+echo "Building: ZENNBase";
+cd ZENN/base; make -j$numProc4; cd ../../;
+
+echo "Building: ZENVBase";
+cd ZENV/base; make -j$numProc4; cd ../../;
+
+echo "Building: ZFXBase";
+cd ZFX/base; make -j$numProc4; cd ../../;
+
+echo "Building: ZarVisBase";
+cd ZarVis/base; make -j$numProc4; cd ../../;
+
+echo "Building: _Zelos";
+cd _Zelos; make -j$numProc4; cd ../;
+
+############
+# Maya2017 #
+############
+
+export MAYA_VER=2017;
+
+echo "Building: ZelosMayaBase (2017)";
+cd ZelosMayaBase; make clean; make -j$numProc4; cd ../;
+
+echo "Building: ZelosTestForMaya (2017)";
+cd ZelosTestForMaya; make clean; make -j$numProc4; cd ../;
+
+echo "Building: ArachneForMaya (2017)";
+cd Arachne/maya; make clean; make -j$numProc4; cd ../..;
+
+echo "Building: ZeomForMaya (2017)";
+cd Zeom/maya; make clean; make -j$numProc4; cd ../..;
+
+echo "Building: ZelosCameraForMaya (2017)";
+cd ZelosCamera/maya; make clean; make -j$numProc4; cd ../../;
+
+echo "Building: ZelosClothForMaya (2017)";
+cd ZelosCloth/maya; make clean; make -j$numProc4; cd ../../;
+
+echo "Building: ZelosMeshForMaya (2017)";
+cd ZelosMesh/maya; make clean; make -j$numProc4; cd ../../;
+
+echo "Building: ZelosWaterForMaya (2017)";
+cd ZelosWater/maya; make clean; make -j$numProc4; cd ../../;
+
+echo "Building: ZelosFurForMaya (2017)";
+cd ZelosFur/maya; make clean; make -j$numProc4; cd ../../;
+
+echo "Building: ZENNForMaya (2017)";
+cd ZENN/maya; make clean; make -j$numProc4; cd ../../;
+
+echo "Building: ZENVForMaya (2017)";
+cd ZENV/maya; make clean; make -j$numProc4; cd ../../;
+
+echo "Building: ZFXForMaya (2017)";
+cd ZFX/maya; make clean; make -j$numProc4; cd ../../;
+
+echo "Building: ZarVisForMaya (2017)";
+cd ZarVis/maya; make clean; make -j$numProc4; cd ../../;
+
+echo "Building: ZRigForMaya (2017)";
+cd ZRigForMaya; make clean; make -j$numProc4; cd ../;
+
+echo "Building: ZWebForMaya (2017)";
+cd ZWeb/maya; make clean; make -j$numProc4; cd ../../;
+
+echo "Building: ZMayaTools (2017)";
+cd ZMayaTools/maya; make clean; make -j$numProc4; cd ../../;
+
+echo "Building: _ZelosForMaya (2017)";
+cd _ZelosForMaya; make clean; make -j$numProc4; cd ..;
+
+echo "Copying: ZelosPythonForMaya (2017)";
+cd ZelosPythonForMaya; make; cd ..;
+
+############
+# Maya2018 #
+############
+
+export MAYA_VER=2018;
+
+echo "Building: ZelosMayaBase (2018)";
+cd ZelosMayaBase; make clean; make -j$numProc4; cd ../;
+
+echo "Building: ZelosTestForMaya (2018)";
+cd ZelosTestForMaya; make clean; make -j$numProc4; cd ../;
+
+echo "Building: ArachneForMaya (2018)";
+cd Arachne/maya; make clean; make -j$numProc4; cd ../..;
+
+echo "Building: ZeomForMaya (2018)";
+cd Zeom/maya; make clean; make -j$numProc4; cd ../..;
+
+echo "Building: ZelosCameraForMaya (2018)";
+cd ZelosCamera/maya; make clean; make -j$numProc4; cd ../../;
+
+echo "Building: ZelosClothForMaya (2018)";
+cd ZelosCloth/maya; make clean; make -j$numProc4; cd ../../;
+
+echo "Building: ZelosMeshForMaya (2018)";
+cd ZelosMesh/maya; make clean; make -j$numProc4; cd ../../;
+
+echo "Building: ZelosWaterForMaya (2018)";
+cd ZelosWater/maya; make clean; make -j$numProc4; cd ../../;
+
+echo "Building: ZelosFurForMaya (2018)";
+cd ZelosFur/maya; make clean; make -j$numProc4; cd ../../;
+
+echo "Building: ZENNForMaya (2018)";
+cd ZENN/maya; make clean; make -j$numProc4; cd ../../;
+
+echo "Building: ZFXForMaya (2018)";
+cd ZFX/maya; make clean; make -j$numProc4; cd ../../;
+
+echo "Building: ZarVisForMaya (2018)";
+cd ZarVis/maya; make clean; make -j$numProc4; cd ../../;
+
+echo "Building: ZRigForMaya (2018)";
+cd ZRigForMaya; make clean; make -j$numProc4; cd ../;
+
+echo "Building: ZWebForMaya (2018)";
+cd ZWeb/maya; make clean; make -j$numProc4; cd ../../;
+
+echo "Building: ZMayaTools (2018)";
+cd ZMayaTools/maya; make clean; make -j$numProc4; cd ../../;
+
+echo "Building: _ZelosForMaya (2018)";
+cd _ZelosForMaya; make clean; make -j$numProc4; cd ..;
+
+echo "Copying: ZelosPythonForMaya (2018)";
+cd ZelosPythonForMaya; make; cd ..;
+
+######################
+# RenderMan plug-ins #
+######################
+
+echo "Building: ZelosWaterForRenderMan"
+cd ZelosWater/rman; ./makeAll; cd ../..;
+
+echo "Building: ZelosFurForRenderMan"
+cd ZelosFur/rman; ./makeAll; cd ../..;
+
+echo "Building: ZENNForRenderMan"
+cd ZENN/rman; ./makeAll; cd ../..;
+
+#echo "Building: ZENVForRenderMan"
+cd ZENV/rman; ./makeAll; cd ../..;
+
+echo "Building: ZFXForRenderMan"
+cd ZFX/rman; ./makeAll; cd ../..;
+
+echo "Building: ZarVisForRenderMan"
+cd ZarVis/rman; ./makeAll; cd ../..;
+
+#echo "Building: ZAssenblyForRenderMan"
+cd ZMayaTools/rman; ./makeAll; cd ../..;
+
+#########################
+# Houdini 12.1 plug-ins #
+#########################
+
+echo "Building: ZelosWaterForHoudini"
+cd ZelosWater/houdini; ./makeAll; cd ../..;
+
+###################
+# ZelosForHoudini #
+###################
+
+export HOUDINI_VER=14.0.201.13
+echo "Building: ZelosForHoudini"
+cd ZelosForHoudini; ./makeAll; cd ..;
+
+################
+# GLSL shaders #
+################
+
+cp -rf shaders /opt/Zelos
+rm -rf /opt/Zelos/shaders/glsl/.svn
+
+#################
+# Python Script #
+#################
+
+echo "Building: Python Script"
+mkdir /opt/Zelos/maya/script
+cp -rf _ZelosForMaya/script/* /opt/Zelos/maya/script
+
+chmod 775 /opt/Zelos/*

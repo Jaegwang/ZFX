@@ -1,0 +1,49 @@
+//------------------//
+// ZFloat4Array.cpp //
+//-------------------------------------------------------//
+// author: Wanho Choi @ Dexter Studios                   //
+// last update: 2015.10.07                               //
+//-------------------------------------------------------//
+
+#include <ZelosBase.h>
+
+ZELOS_NAMESPACE_BEGIN
+
+ZFloat4Array::ZFloat4Array()
+{}
+
+ZFloat4Array::ZFloat4Array( const ZFloat4Array& a )
+: ZArray<ZFloat4>::ZArray( a )
+{}
+
+ZFloat4Array::ZFloat4Array( int l )
+: ZArray<ZFloat4>::ZArray( l )
+{}
+
+ostream&
+operator<<( ostream& os, const ZFloat4Array& object )
+{
+	os << "<ZFloat4Array>" << endl;
+	const int size     = object.size();
+	const int capacity = object.capacity();
+
+	double bytes = size * sizeof(ZFloat4);
+	os << " size    : " << size << " (";
+	     if( bytes <       1024.0  ) { os << ( bytes                 ) << " bytes)" << endl; }
+	else if( bytes < ZPow2(1024.0) ) { os << ( bytes /       1024.0  ) << " kb)"    << endl; }
+	else if( bytes < ZPow3(1024.0) ) { os << ( bytes / ZPow2(1024.0) ) << " mb)"    << endl; }
+	else if( bytes < ZPow4(1024.0) ) { os << ( bytes / ZPow3(1024.0) ) << " gb)"    << endl; }
+
+	bytes = capacity * sizeof(ZFloat4);
+	os << " capacity: " << size << " (";
+	     if( bytes <       1024.0  ) { os << ( bytes                 ) << " bytes)" << endl; }
+	else if( bytes < ZPow2(1024.0) ) { os << ( bytes /       1024.0  ) << " kb)"    << endl; }
+	else if( bytes < ZPow3(1024.0) ) { os << ( bytes / ZPow2(1024.0) ) << " mb)"    << endl; }
+	else if( bytes < ZPow4(1024.0) ) { os << ( bytes / ZPow3(1024.0) ) << " gb)"    << endl; }
+
+	os << endl;
+	return os;
+}
+
+ZELOS_NAMESPACE_END
+

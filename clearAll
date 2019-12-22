@@ -1,0 +1,79 @@
+rm -rf /opt/Zelos/*
+
+cd ZelosBase;             make clean; cd ../;
+cd ZelosCudaBase;         make clean; cd ../;
+cd ZelosMayaBase;         make clean; cd ../;
+
+cd ZelosTestForMaya;      make clean; cd ../;
+
+cd Arachne/base;          make clean; cd ../../;
+cd Arachne/maya;          make clean; cd ../../;
+
+cd Zeom/base;             make clean; cd ../../;
+cd Zeom/maya;             make clean; cd ../../;
+
+cd ZelosCamera/base;      make clean; cd ../../;
+cd ZelosCamera/maya;      make clean; cd ../../;
+
+cd ZelosCloth/base;       make clean; cd ../../;
+cd ZelosCloth/maya;       make clean; cd ../../;
+
+cd ZelosFluid/base;       make clean; cd ../../;
+cd ZelosFluid/unittest;   make clean; cd ../../;
+
+cd ZelosFur/base;         make clean; cd ../../;
+cd ZelosFur/maya;         make clean; cd ../../;
+cd ZelosFur/rman;         ./clearAll; cd ../../;
+
+cd ZelosMesh/base;        make clean; cd ../../;
+cd ZelosMesh/maya;        make clean; cd ../../;
+cd ZelosMesh/rman;        ./clearAll; cd ../../;
+
+cd ZelosWater/base;       make clean; cd ../../;
+cd ZelosWater/maya;       make clean; cd ../../;
+cd ZelosWater/rman;       ./clearAll; cd ../../;
+cd ZelosWater/houdini;    ./clearAll; cd ../../;
+
+cd ZelosFur/base;         make clean; cd ../../;
+cd ZelosFur/maya;         make clean; cd ../../;
+cd ZelosFur/rman;         ./clearAll; cd ../../;
+
+cd ZENN/base;             make clean; cd ../../;
+cd ZENN/maya;             make clean; cd ../../;
+cd ZENN/rman;             ./clearAll; cd ../../;
+
+cd ZENV/base;             make clean; cd ../../;
+cd ZENV/maya;             make clean; cd ../../;
+cd ZENV/rman;             ./clearAll; cd ../../;
+
+cd ZRigForMaya;           make clean; cd ../;
+
+cd ZWeb/maya              make clean; cd ../../;
+
+cd ZFX/base;              make clean; cd ../../;
+cd ZFX/maya;              make clean; cd ../../;
+cd ZFX/rman;              ./clearAll; cd ../../;
+
+cd ZarVis/base;           make clean; cd ../../;
+cd ZarVis/maya;           make clean; cd ../../;
+cd ZarVis/rman;           ./clearAll; cd ../../;
+
+cd ZMayaTools/maya;       make clean; cd ../../;
+cd ZMayaTools/rman;       ./clearAll; cd ../../;
+
+cd ZelosForHoudini;       ./clearAll; cd ../;
+
+cd _Zelos;                make clean; cd ../;
+cd _ZelosForMaya;         export MAYA_VER=2014;   make clean; cd ../;
+cd _ZelosForMaya;         export MAYA_VER=2016.5; make clean; cd ../;
+cd _ZelosForMaya;         export MAYA_VER=2017;   make clean; cd ../;
+
+cd maya_plugin_test;      make clean; cd ../;
+
+rm -rf /opt/Zelos/maya/script/*
+
+cd test; ./clearAll; cd ..
+
+rm -rf data/tmp/*
+rm -f svn-commit.tmp
+
